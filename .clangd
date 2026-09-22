@@ -1,0 +1,14 @@
+CompileFlags:
+  Add:
+    - "-std=c++17"
+    - "-I/opt/homebrew/include"
+    - "-I/opt/homebrew/opt/crow/include"
+    - "-I/Users/sagarbansal/chess"
+    - "-I/Users/sagarbansal/chess/api"
+    - "-I/Users/sagarbansal/chess/board"
+    - "-I/Users/sagarbansal/chess/game"
+    - "-I/Users/sagarbansal/chess/pieces"
+    - "-I/Users/sagarbansal/chess/enums"
+    - "-I/Users/sagarbansal/chess/rules"
+    - "-I/Users/sagarbansal/chess/user"
+    - "-I/Users/sagarbansal/chess/utlis"
