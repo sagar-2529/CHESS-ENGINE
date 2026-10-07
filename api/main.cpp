@@ -1,4 +1,7 @@
 #include <crow.h>
+#include <cstdlib>
+#include <iostream>
+#include <stdexcept>
 #include "GameManager.h"
 #include "Routes.h"
 
@@ -28,10 +31,24 @@ int main()
 
     registerRoutes(app, manager);
 
-    std::cout << "Chess API server starting on http://localhost:8080\n";
+    int port = 8080;
+    if (const char* portValue = std::getenv("PORT"))
+    {
+        try
+        {
+            port = std::stoi(portValue);
+        }
+        catch (const std::exception&)
+        {
+            std::cerr << "Invalid PORT value; using 8080 instead.\n";
+        }
+    }
+
+    std::cout << "Chess API server starting on port " << port << "\n";
     std::cout << "Press Ctrl+C to stop.\n";
 
-    app.port(8080)
+    app.bindaddr("0.0.0.0")
+       .port(port)
        .multithreaded()
        .run();
 

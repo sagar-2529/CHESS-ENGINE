@@ -5,7 +5,7 @@ import { chessApi } from '../api/chessApi';
 function friendlyError(e) {
   const msg = e?.message || '';
   if (msg === 'Failed to fetch' || msg.includes('NetworkError') || msg.includes('ERR_CONNECTION_REFUSED')) {
-    return 'Cannot reach the chess server at localhost:8080. Is it running?';
+    return 'Cannot reach the chess server. Please try again shortly.';
   }
   return msg || 'Something went wrong. Please try again.';
 }

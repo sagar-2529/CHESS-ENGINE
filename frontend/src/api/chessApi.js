@@ -1,5 +1,8 @@
 // src/api/chessApi.js
-const BASE = '/api';
+// In development, Vite proxies /api to the local C++ server. In production,
+// set VITE_API_BASE to the public backend URL, for example:
+// https://chess-api.onrender.com/api
+const BASE = (import.meta.env.VITE_API_BASE || '/api').replace(/\/$/, '');
 
 async function request(method, path, body) {
   const opts = {

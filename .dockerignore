@@ -1,0 +1,10 @@
+.git
+.vscode
+node_modules
+frontend
+chess
+chess_cli
+chess_server
+build
+*.o
+*.log
