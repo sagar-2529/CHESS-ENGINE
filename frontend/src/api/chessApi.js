@@ -7,7 +7,10 @@ const BASE = (import.meta.env.VITE_API_BASE || '/api').replace(/\/$/, '');
 async function request(method, path, body) {
   const opts = {
     method,
-    headers: body ? { 'Content-Type': 'application/json' } : {},
+    // The C++ API parses the JSON body directly and does not require a
+    // Content-Type header. Omitting application/json keeps this a CORS
+    // "simple request", avoiding a browser OPTIONS preflight for each move.
+    headers: {},
     body: body ? JSON.stringify(body) : undefined,
   };
   const res = await fetch(`${BASE}${path}`, opts);
