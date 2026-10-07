@@ -6,6 +6,7 @@ RUN apt-get update \
        ca-certificates \
        cmake \
        git \
+       libasio-dev \
        libboost-system-dev \
     && rm -rf /var/lib/apt/lists/*
 
