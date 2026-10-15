@@ -885,6 +885,63 @@ body {
   white-space: nowrap;
 }
 
+/* ── Landing page ────────────────────────────────────────────── */
+.landing {
+  min-height: 100vh;
+  padding: var(--sp-6) clamp(24px, 7vw, 112px) var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at 78% 46%, rgba(200, 169, 110, 0.12), transparent 26%),
+    var(--color-bg);
+}
+
+.landing-nav, .landing-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-text-2);
+  font-size: 0.82rem;
+}
+
+.landing-brand { color: var(--color-text); font-size: 1.15rem; font-weight: 700; }
+.landing-brand > span:first-child { color: var(--color-accent); margin-right: 8px; }
+.landing-brand > span:last-child { color: var(--color-accent); }
+.landing-nav a { color: var(--color-text-2); text-decoration: none; transition: color var(--t-fast) var(--ease); }
+.landing-nav a:hover { color: var(--color-accent); }
+
+.landing-hero {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(320px, 0.9fr);
+  gap: clamp(48px, 9vw, 140px);
+  align-items: center;
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.landing-kicker { color: var(--color-accent); font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: var(--sp-5); }
+.landing h1 { font-size: clamp(3.2rem, 7vw, 6.6rem); line-height: 0.95; letter-spacing: -0.065em; font-weight: 700; margin-bottom: var(--sp-6); }
+.landing h1 em { color: var(--color-accent); font-family: Georgia, serif; font-weight: 400; letter-spacing: -0.07em; }
+.landing-description { color: var(--color-text-2); max-width: 435px; font-size: 1.05rem; line-height: 1.7; margin-bottom: var(--sp-8); }
+.landing-play { border: 0; border-radius: var(--r-sm); padding: 15px 22px; background: var(--color-accent); color: #16120c; cursor: pointer; font: inherit; font-weight: 700; font-size: 1rem; transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease); }
+.landing-play:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(200, 169, 110, 0.25); }
+.landing-play span { margin-left: 24px; font-size: 1.2rem; }
+.landing-note { margin-top: var(--sp-4); color: var(--color-text-3); font-size: 0.78rem; }
+
+.landing-board { position: relative; width: min(100%, 500px); justify-self: center; aspect-ratio: 1; padding: 20px; background: #2d1a0e; border-radius: 14px; box-shadow: 0 28px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.05); transform: rotate(3deg); }
+.landing-board-glow { position: absolute; inset: 35% 15%; background: rgba(200,169,110,0.25); filter: blur(70px); }
+.landing-grid { position: relative; display: grid; grid-template-columns: repeat(8, 1fr); height: 100%; overflow: hidden; border-radius: 4px; }
+.landing-square { display: grid; place-items: center; font-size: clamp(19px, 3.4vw, 39px); line-height: 1; }
+.landing-square.light { background: #f0d9b5; color: #28221a; }
+.landing-square.dark { background: #b58863; color: #161616; }
+.landing-square:nth-child(n + 49) { color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.75); }
+.landing-footer { border-top: 1px solid var(--color-border); padding-top: var(--sp-4); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; }
+
+.home-link { background: transparent; border: 0; color: var(--color-text-2); cursor: pointer; font: inherit; font-size: 0.82rem; margin-right: var(--sp-4); }
+.home-link:hover { color: var(--color-accent); }
+
 /* ── Animations ──────────────────────────────────────────────── */
 @keyframes spin {
   to { transform: rotate(360deg); }
@@ -933,6 +990,11 @@ body {
 
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 919px) {
+  .landing { padding: var(--sp-5) var(--sp-5) var(--sp-4); }
+  .landing-hero { grid-template-columns: 1fr; padding: var(--sp-10) 0; gap: var(--sp-10); }
+  .landing-copy { text-align: center; }
+  .landing-description { margin-left: auto; margin-right: auto; }
+  .landing-board { max-width: 380px; }
   .app-main {
     padding: var(--sp-4) var(--sp-4) var(--sp-8);
     align-items: flex-start;

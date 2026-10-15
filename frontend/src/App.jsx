@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { useChessGame } from './hooks/useChessGame';
+import LandingPage from './components/LandingPage';
 import Board from './components/Board';
 import StatusBar from './components/StatusBar';
 import GameControls from './components/GameControls';
@@ -7,6 +9,7 @@ import GameOverModal from './components/GameOverModal';
 import './index.css';
 
 export default function App() {
+  const [view, setView] = useState('landing');
   const {
     gameId,
     board,
@@ -24,9 +27,18 @@ export default function App() {
     onPromotionChosen,
     newGame,
     resetGame,
-  } = useChessGame();
+  } = useChessGame(false);
+
+  const startPlaying = () => {
+    setView('game');
+    newGame();
+  };
 
   const isGameOver = status === 'CHECKMATE' || status === 'STALEMATE' || status === 'DRAW';
+
+  if (view === 'landing') {
+    return <LandingPage onPlay={startPlaying} />;
+  }
 
   return (
     <div className="app">
@@ -44,6 +56,7 @@ export default function App() {
           </span>
         </div>
         <div className="app-header-meta">
+          <button className="home-link" onClick={() => setView('landing')}>Home</button>
           {gameId && (
             <button
               className="game-id-pill"

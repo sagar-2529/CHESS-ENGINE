@@ -34,7 +34,7 @@ function isPawnPromotion(board, fromRow, fromCol, toRow) {
   return false;
 }
 
-export function useChessGame() {
+export function useChessGame(autoStart = true) {
   const [gameId, setGameId] = useState(null);
   const [board, setBoard] = useState(null);
   const [turn, setTurn] = useState('WHITE');
@@ -195,9 +195,10 @@ export function useChessGame() {
     return () => clearTimeout(t);
   }, [error]);
 
-  // Start a new game on mount
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => { newGame(); }, []);
+  // The landing page can defer creating a game until the player chooses Play.
+  useEffect(() => {
+    if (autoStart) newGame();
+  }, [autoStart, newGame]);
 
   return {
     gameId, board, turn, status, inCheck, winner,
